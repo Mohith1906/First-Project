@@ -1,0 +1,964 @@
+
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+(.venv) PS C:\Users\2025\PycharmProjects> cd C:\Users\2025\PycharmProjects\QAfox; pwd
+
+Path                               
+----                               
+C:\Users\2025\PycharmProjects\QAfox
+
+
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> pip install pytest pytest-html pytest-cov allure-pytest
+Requirement already satisfied: pytest in c:\users\2025\pycharmprojects\.venv\lib\site-packages (9.0.1)
+Requirement already satisfied: pytest-html in c:\users\2025\appdata\roaming\python\python314\site-packages (4.1.1)
+Requirement already satisfied: pytest-cov in c:\users\2025\appdata\roaming\python\python314\site-packages (7.0.0)
+Requirement already satisfied: allure-pytest in c:\users\2025\appdata\roaming\python\python314\site-packages (2.15.2)
+Requirement already satisfied: colorama>=0.4 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from pytest) (0.4.6)
+Requirement already satisfied: iniconfig>=1.0.1 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from pytest) (2.3.0)
+Requirement already satisfied: packaging>=22 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from pytest) (25.0)
+Requirement already satisfied: pluggy<2,>=1.5 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from pytest) (1.6.0)
+Requirement already satisfied: pygments>=2.7.2 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from pytest) (2.19.2)
+Requirement already satisfied: jinja2>=3.0.0 in c:\users\2025\appdata\roaming\python\python314\site-packages (from pytest-html) (3.1.6)
+Requirement already satisfied: pytest-metadata>=2.0.0 in c:\users\2025\appdata\roaming\python\python314\site-packages (from pytest-html) (3.1.1)
+Requirement already satisfied: coverage>=7.10.6 in c:\users\2025\appdata\roaming\python\python314\site-packages (from coverage[toml]>=7.10.6->pytest-cov) (7.12.0)
+Requirement already satisfied: allure-python-commons==2.15.2 in c:\users\2025\appdata\roaming\python\python314\site-packages (from allure-pytest) (2.15.2)
+Requirement already satisfied: attrs>=16.0.0 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from allure-python-commons==2.15.2->allure-pytest) (25.4.0)
+Requirement already satisfied: MarkupSafe>=2.0 in c:\users\2025\appdata\roaming\python\python314\site-packages (from jinja2>=3.0.0->pytest-html) (3.0.3)
+
+[notice] A new release of pip is available: 25.1.1 -> 25.3
+[notice] To update, run: python.exe -m pip install --upgrade pip
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; Get-Content -Path .\pytest.ini
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; New-Item -ItemType Directory -Path .\reports -Force | Out-Null; @'
+>> [pytest]
+>> minversion = 7.0
+>> testpaths = Tests
+>> addopts = --maxfail=1 -v --junitxml=reports/junit.xml --html=reports/report.html --self-contained-html --cov=. --cov-report=html:reports/coverage
+>> '@ | Set-Content -Path .\pytest.ini -Encoding utf8; Get-Content -Path .\pytest.ini
+[pytest]
+minversion = 7.0
+testpaths = Tests
+addopts = --maxfail=1 -v --junitxml=reports/junit.xml --html=reports/report.html --self-contained-html --cov=. --cov-report=html:reports/coverage
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; pytest --alluredir=.\reports\allure-results 2>&1
+pytest : ERROR: C:\Users\2025\PycharmProjects\QAfox\pytest.ini:1: unexpected line: '\ufeff[pytest]'
+At line:1 char:41
++ ... charmProjects\QAfox; pytest --alluredir=.\reports\allure-results 2>&1
++                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ERROR: C:\Users...\ufeff[pytest]':String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; Remove-Item -Path .\pytest.ini -Force; @'
+>> [pytest]
+>> minversion = 7.0
+>> testpaths = Tests
+>> addopts = --maxfail=1 -v --junitxml=reports/junit.xml --html=reports/report.html --self-contained-html --cov=. --cov-report=html:reports/coverage
+>> '@ | Set-Content -Path .\pytest.ini -Encoding ASCII; Get-Content -Path .\pytest.ini
+[pytest]
+minversion = 7.0
+testpaths = Tests
+addopts = --maxfail=1 -v --junitxml=reports/junit.xml --html=reports/report.html --self-contained-html --cov=. --cov-report=html:reports/coverage
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; pytest --alluredir=.\reports\allure-results 2>&1
+============================================================================== test session starts ===============================================================================
+platform win32 -- Python 3.14.0, pytest-9.0.1, pluggy-1.6.0 -- C:\Users\2025\PycharmProjects\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+metadata: {'Python': '3.14.0', 'Platform': 'Windows-11-10.0.26100-SP0', 'Packages': {'pytest': '9.0.1', 'pluggy': '1.6.0'}, 'Plugins': {'allure-pytest': '2.15.2', 'cov': '7.0.0', 'html': '4.1.1', 'metadata': '3.1.1'}, 'JAVA_HOME': 'C:\\Program Files\\Java\\jdk-21'}
+rootdir: C:\Users\2025\PycharmProjects\QAfox
+configfile: pytest.ini
+testpaths: Tests
+plugins: allure-pytest-2.15.2, cov-7.0.0, html-4.1.1, metadata-3.1.1
+collected 11 items                                                                                                                                                                
+
+Tests/test_Register.py::TestRegister::test_register_with_mandatory_fields ERROR                                                                                             [  9%]
+
+===================================================================================== ERRORS ===================================================================================== 
+_______________________________________________________ ERROR at setup of TestRegister.test_register_with_mandatory_fields _______________________________________________________ 
+
+request = <SubRequest 'setup_and_teardown' for <Function test_register_with_mandatory_fields>>
+
+    @pytest.fixture
+    def setup_and_teardown(request):
+        browser = Read_Configurations.read_configurations("basic_info","browser")
+        driver = None
+        if browser.__eq__("chrome"):
+            if WEBDRIVER_MANAGER_AVAILABLE:
+                driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+            else:
+                # Fall back to Selenium default (Selenium Manager) or chromedriver in PATH
+>               driver = webdriver.Chrome()
+                         ^^^^^^^^^^^^^^^^^^
+
+Tests\conftest.py:26:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  
+..\.venv\Lib\site-packages\selenium\webdriver\chrome\webdriver.py:47: in __init__
+    super().__init__(
+..\.venv\Lib\site-packages\selenium\webdriver\chromium\webdriver.py:71: in __init__
+    super().__init__(command_executor=executor, options=options)
+..\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py:263: in __init__
+    self.start_session(capabilities)
+..\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py:366: in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  
+
+self = <selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x000001F9F1155160>
+response = {'status': 500, 'value': '{"value":{"error":"session not created","message":"session not created: This version of Chro...]\\n\\tRtlInitializeExceptionChain [0x0x7732d6db+107]\\n\\tRtlGetAppContainerNamedObjectPath [0x0x7732d661+561]\\n"}}'}
+
+    def check_response(self, response: dict[str, Any]) -> None:
+        """Checks that a JSON response from the WebDriver does not have an
+        error.
+
+        Args:
+            response: The JSON response from the WebDriver server as a dictionary
+                object.
+
+        Raises:
+            WebDriverException: If the response contains an error message.
+        """
+        status = response.get("status", None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get("message", "")
+        screen: str = response.get("screen", "")
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get("value", None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value["value"]
+                        status = value.get("error", None)
+                        if not status:
+                            status = value.get("status", ErrorCode.UNKNOWN_ERROR)
+                            message = value.get("value") or value.get("message")
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get("message") if isinstance(message, dict) else None
+                        else:
+                            message = value.get("message", None)
+                except ValueError:
+                    pass
+
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith("__")]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+
+        if not value:
+            value = response["value"]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == "" and "message" in value:
+            message = value["message"]
+
+        screen = None  # type: ignore[assignment]
+        if "screen" in value:
+            screen = value["screen"]
+
+        stacktrace = None
+        st_value = value.get("stackTrace") or value.get("stacktrace")
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split("\n")
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get("lineNumber", "")
+                        file = frame.get("fileName", "<anonymous>")
+                        if line:
+                            file = f"{file}:{line}"
+                        meth = frame.get("methodName", "<anonymous>")
+                        if "className" in frame:
+                            meth = f"{frame['className']}.{meth}"
+                        msg = "    at %s (%s)"
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if "data" in value:
+                alert_text = value["data"].get("text")
+            elif "alert" in value:
+                alert_text = value["alert"].get("text")
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+>       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 141
+E       Current browser version is 143.0.7499.40 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+E       Stacktrace:
+E               GetHandleVerifier [0x0xeafea3+66515]
+E               GetHandleVerifier [0x0xeafee4+66580]
+E               (No symbol) [0x0xc9dc48]
+E               (No symbol) [0x0xcd9875]
+E               (No symbol) [0x0xcd87f9]
+E               (No symbol) [0x0xcd3da5]
+E               (No symbol) [0x0xccea2a]
+E               (No symbol) [0x0xd16ffc]
+E               (No symbol) [0x0xd168fa]
+E               (No symbol) [0x0xd0afc6]
+E               (No symbol) [0x0xcdc2ca]
+E               (No symbol) [0x0xcdd154]
+E               GetHandleVerifier [0x0x11073d3+2521347]
+E               GetHandleVerifier [0x0x1102353+2500739]
+E               GetHandleVerifier [0x0xed7cf4+229924]
+E               GetHandleVerifier [0x0xec8258+165768]
+E               GetHandleVerifier [0x0xeced0d+193085]
+E               GetHandleVerifier [0x0xeb81b8+100072]
+E               GetHandleVerifier [0x0xeb8350+100480]
+E               GetHandleVerifier [0x0xea260a+11066]
+E               BaseThreadInitThunk [0x0x75bf5d49+25]
+E               RtlInitializeExceptionChain [0x0x7732d6db+107]
+E               RtlGetAppContainerNamedObjectPath [0x0x7732d661+561]
+
+..\.venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py:233: SessionNotCreatedException
+------------------------------------------------------------------------------- Captured log setup ------------------------------------------------------------------------------- 
+WARNING  selenium.webdriver.common.selenium_manager:selenium_manager.py:143 The chromedriver version (141.0.7390.76) detected in PATH at C:\Users\2025\AppData\Local\Programs\Pytho
+n\Python313\Scripts\chromedriver.exe might not be compatible with the detected chrome version (143.0.7499.40); currently, chromedriver 143.0.7499.40 is recommended for chrome 143.*, so it is advised to delete the driver in PATH and retry
+--------------------------------------------------- generated xml file: C:\Users\2025\PycharmProjects\QAfox\reports\junit.xml ---------------------------------------------------- 
+--------------------------------------------- Generated html report: file:///C:/Users/2025/PycharmProjects/QAfox/reports/report.html --------------------------------------------- 
+============================================================================ short test summary info =============================================================================
+ERROR Tests/test_Register.py::TestRegister::test_register_with_mandatory_fields - selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 141
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+=============================================================================== 1 error in 11.63s ================================================================================ 
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; pip install --upgrade webdriver-manager 2>&1 | tail -20
+tail : The term 'tail' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify 
+that the path is correct and try again.
+At line:1 char:88
++ ... ojects\QAfox; pip install --upgrade webdriver-manager 2>&1 | tail -20
++                                                                  ~~~~
+    + CategoryInfo          : ObjectNotFound: (tail:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; pip install --upgrade webdriver-manager selenium
+Collecting webdriver-manager
+  Using cached webdriver_manager-4.0.2-py2.py3-none-any.whl.metadata (12 kB)
+Requirement already satisfied: selenium in c:\users\2025\pycharmprojects\.venv\lib\site-packages (4.38.0)
+Collecting requests (from webdriver-manager)
+  Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting python-dotenv (from webdriver-manager)
+  Downloading python_dotenv-1.2.1-py3-none-any.whl.metadata (25 kB)
+Requirement already satisfied: packaging in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from webdriver-manager) (25.0)
+Requirement already satisfied: urllib3<3.0,>=2.5.0 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from urllib3[socks]<3.0,>=2.5.0->selenium) (2.6.0)
+Requirement already satisfied: trio<1.0,>=0.31.0 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from selenium) (0.32.0)
+Requirement already satisfied: trio-websocket<1.0,>=0.12.2 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from selenium) (0.12.2)
+Requirement already satisfied: certifi>=2025.10.5 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from selenium) (2025.11.12)
+Requirement already satisfied: typing_extensions<5.0,>=4.15.0 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from selenium) (4.15.0)
+Requirement already satisfied: websocket-client<2.0,>=1.8.0 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from selenium) (1.9.0)
+Requirement already satisfied: attrs>=23.2.0 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from trio<1.0,>=0.31.0->selenium) (25.4.0)
+Requirement already satisfied: sortedcontainers in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from trio<1.0,>=0.31.0->selenium) (2.4.0)
+Requirement already satisfied: idna in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from trio<1.0,>=0.31.0->selenium) (3.11)
+Requirement already satisfied: outcome in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from trio<1.0,>=0.31.0->selenium) (1.3.0.post0)
+Requirement already satisfied: sniffio>=1.3.0 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from trio<1.0,>=0.31.0->selenium) (1.3.1)
+Requirement already satisfied: cffi>=1.14 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from trio<1.0,>=0.31.0->selenium) (2.0.0)
+Requirement already satisfied: wsproto>=0.14 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from trio-websocket<1.0,>=0.12.2->selenium) (1.3.2)
+Requirement already satisfied: pysocks!=1.5.7,<2.0,>=1.5.6 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from urllib3[socks]<3.0,>=2.5.0->selenium) (1.7.1)
+Requirement already satisfied: pycparser in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from cffi>=1.14->trio<1.0,>=0.31.0->selenium) (2.23)
+Requirement already satisfied: h11<1,>=0.16.0 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from wsproto>=0.14->trio-websocket<1.0,>=0.12.2->selenium) (0.16.0)        
+Collecting charset_normalizer<4,>=2 (from requests->webdriver-manager)
+  Downloading charset_normalizer-3.4.4-cp314-cp314-win_amd64.whl.metadata (38 kB)
+Using cached webdriver_manager-4.0.2-py2.py3-none-any.whl (27 kB)
+Downloading python_dotenv-1.2.1-py3-none-any.whl (21 kB)
+Using cached requests-2.32.5-py3-none-any.whl (64 kB)
+Downloading charset_normalizer-3.4.4-cp314-cp314-win_amd64.whl (107 kB)
+Installing collected packages: python-dotenv, charset_normalizer, requests, webdriver-manager
+Successfully installed charset_normalizer-3.4.4 python-dotenv-1.2.1 requests-2.32.5 webdriver-manager-4.0.2                                                                        
+
+[notice] A new release of pip is available: 25.1.1 -> 25.3
+[notice] To update, run: python.exe -m pip install --upgrade pip
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; pytest --alluredir=.\reports\allure-results -v 2>&1 | head -150
+head : The term 'head' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify 
+that the path is correct and try again.
+At line:1 char:95
++ ... Afox; pytest --alluredir=.\reports\allure-results -v 2>&1 | head -150
++                                                                 ~~~~
+    + CategoryInfo          : ObjectNotFound: (head:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; pytest --alluredir=.\reports\allure-results -v 2>&1
+============================================================================== test session starts ===============================================================================
+platform win32 -- Python 3.14.0, pytest-9.0.1, pluggy-1.6.0 -- C:\Users\2025\PycharmProjects\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+metadata: {'Python': '3.14.0', 'Platform': 'Windows-11-10.0.26100-SP0', 'Packages': {'pytest': '9.0.1', 'pluggy': '1.6.0'}, 'Plugins': {'allure-pytest': '2.15.2', 'cov': '7.0.0', 'html': '4.1.1', 'metadata': '3.1.1'}, 'JAVA_HOME': 'C:\\Program Files\\Java\\jdk-21'}
+rootdir: C:\Users\2025\PycharmProjects\QAfox
+configfile: pytest.ini
+testpaths: Tests
+plugins: allure-pytest-2.15.2, cov-7.0.0, html-4.1.1, metadata-3.1.1
+collected 11 items                                                                                                                                                                
+
+Tests/test_Register.py::TestRegister::test_register_with_mandatory_fields PASSED                                                                                            [  9%]
+Tests/test_Register.py::TestRegister::test_register_with_all_fields PASSED                                                                                                  [ 18%]
+Tests/test_Register.py::TestRegister::test_register_with_duplicate_email PASSED                                                                                             [ 27%]
+Tests/test_Register.py::TestRegister::test_without_entering_any_fields PASSED                                                                                               [ 36%]
+Tests/test_Search.py::TestSearch::test_search_for_a_valid_product PASSED                                                                                                    [ 45%]
+Tests/test_Search.py::TestSearch::test_search_for_invalid_product PASSED                                                                                                    [ 54%]
+Tests/test_Search.py::TestSearch::test_search_without_entering_any_product PASSED                                                                                           [ 63%]
+Tests/test_login.py::TestLogin::test_login_with_valid_credentials PASSED                                                                                                    [ 72%]
+Tests/test_login.py::TestLogin::test_login_with_invalid_credentials PASSED                                                                                                  [ 81%]
+Tests/test_login.py::TestLogin::test_Login_with_valid_email_and_invalid_password PASSED                                                                                     [ 90%]
+Tests/test_login.py::TestLogin::test_Login_without_entering_credentials PASSED                                                                                              [100%]
+
+--------------------------------------------------- generated xml file: C:\Users\2025\PycharmProjects\QAfox\reports\junit.xml ---------------------------------------------------- 
+================================================================================= tests coverage ================================================================================= 
+________________________________________________________________ coverage: platform win32, python 3.14.0-final-0 _________________________________________________________________ 
+
+Coverage HTML written to dir reports/coverage
+--------------------------------------------- Generated html report: file:///C:/Users/2025/PycharmProjects/QAfox/reports/report.html --------------------------------------------- 
+========================================================================= 11 passed in 124.46s (0:02:04) ========================================================================= 
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; allure --version 2>&1
+allure : The term 'allure' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, 
+verify that the path is correct and try again.
+At line:1 char:41
++ cd C:\Users\2025\PycharmProjects\QAfox; allure --version 2>&1
++                                         ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (allure:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> choco install allure.commandline -y 2>&1
+Chocolatey v2.6.0
+Chocolatey detected you are not running from an elevated command shell
+ (cmd/powershell).
+
+ You may experience errors - many functions/packages
+ require admin rights. Only advanced users should run choco w/out an
+ elevated shell. When you open the command shell, you should ensure
+ that you do so with "Run as Administrator" selected. If you are
+ attempting to use Chocolatey in a non-administrator setting, you
+ must select a different location other than the default install
+ location. See
+ https://docs.chocolatey.org/en-us/choco/setup#non-administrative-install
+ for details.
+
+For the question below, you have 20 seconds to make a selection.
+
+ Do you want to continue?([Y]es/[N]o): y
+
+Installing the following packages:
+allure.commandline
+By installing, you accept licenses for the packages.
+allure.commandline not installed. The package was not found with the source(s) listed.
+ Source(s): 'https://community.chocolatey.org/api/v2/'
+ NOTE: When you specify explicit sources, it overrides default sources.
+If the package version is a prerelease and you didn't specify `--pre`,
+ the package may not be found.
+Please see https://docs.chocolatey.org/en-us/troubleshooting for more
+ assistance.
+
+Chocolatey installed 0/1 packages. 1 packages failed.
+ See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
+
+Failures
+ - allure.commandline - allure.commandline not installed. The package was not found with the source(s) listed.
+ Source(s): 'https://community.chocolatey.org/api/v2/'
+ NOTE: When you specify explicit sources, it overrides default sources.
+If the package version is a prerelease and you didn't specify `--pre`,
+ the package may not be found.
+Please see https://docs.chocolatey.org/en-us/troubleshooting for more
+ assistance.
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; ls -la reports/
+Get-ChildItem : A parameter cannot be found that matches parameter name 'la'.
+At line:1 char:44
++ cd C:\Users\2025\PycharmProjects\QAfox; ls -la reports/
++                                            ~~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-ChildItem], ParameterBindingException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.GetChildItemCommand
+
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; Get-ChildItem -Path .\reports -Recurse
+
+
+    Directory: C:\Users\2025\PycharmProjects\QAfox\reports
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         12/6/2025   8:18 PM                allure-results
+d-----         12/6/2025   8:18 PM                coverage
+-a----         12/6/2025   8:18 PM           1471 junit.xml                                                                                                                       
+-a----         12/6/2025   8:18 PM          40150 report.html
+
+
+    Directory: C:\Users\2025\PycharmProjects\QAfox\reports\allure-results
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         12/6/2025   8:17 PM            782 095354b9-b7fc-48ab-a9a7-536a209a4b6b-result.json
+-a----         12/6/2025   8:17 PM            784 21d9e36f-47cb-475e-9762-a621c8d2720f-result.json                                                                                
+-a----         12/6/2025   8:17 PM            762 284644d7-dcfd-4c73-89d2-9a35d37bb2d3-result.json
+-a----         12/6/2025   8:18 PM            759 2eb6b028-1f29-43f0-8aed-edf7ef081e36-result.json
+-a----         12/6/2025   8:18 PM            789 4c39e3b5-a024-4a8d-b6e2-4b9082d90e94-result.json
+-a----         12/6/2025   8:17 PM            772 5077bd79-e3e2-4bb0-a743-687f928a4073-result.json
+-a----         12/6/2025   8:18 PM            375 54c64326-deda-4376-a278-0edfa3ef068e-container.json
+-a----         12/6/2025   8:17 PM            375 57bd5c8e-5709-44e1-8a06-d7bf0f83fb6f-container.json
+-a----         12/6/2025   8:17 PM            375 5bcc852d-d446-4c9d-802d-094b0efa6e33-container.json
+-a----         12/6/2025   8:16 PM          10014 5d93bc68-5d81-47be-81fd-a2a02d9b4025-result.json                                                                                
+-a----         12/6/2025   8:16 PM           4339 5f2a2ef4-af83-41b2-8ef6-62198d1c790a-container.json
+-a----         12/6/2025   8:17 PM            375 624b6ea4-0f72-4be5-8da4-2356776b8429-container.json
+-a----         12/6/2025   8:17 PM            778 691ed971-7fa4-429e-824f-5b8e2ffbd3cd-result.json
+-a----         12/6/2025   8:17 PM            375 6efa0e83-2c71-441f-913e-d92042fabccd-container.json
+-a----         12/6/2025   8:18 PM            375 73b0a3ba-dd7f-49b6-9ff9-086eca86115b-container.json
+-a----         12/6/2025   8:18 PM            762 80881019-52d1-4520-bcca-e1c8cc34ba7d-result.json
+-a----         12/6/2025   8:17 PM            375 830a6238-789e-4f23-8aec-581b73cd9da7-container.json
+-a----         12/6/2025   8:18 PM            763 857ad9f0-555b-4ed4-b5d7-9e752708b07c-result.json                                                                                
+-a----         12/6/2025   8:18 PM            375 9023c65f-cc00-4e43-a7a5-a0848ea12447-container.json
+-a----         12/6/2025   8:18 PM            375 929f492b-76a7-4143-8c44-ccbc9aa4bd5d-container.json
+-a----         12/6/2025   8:18 PM            375 a5dcb638-c0e3-493c-be72-1068f3575bc2-container.json
+-a----         12/6/2025   8:18 PM            375 bbe58b38-2f63-4d66-8f4d-db1e9cfd7583-container.json
+-a----         12/6/2025   8:18 PM            780 cfb3ef24-fb3c-4b5b-9274-b055ef37e664-result.json
+-a----         12/6/2025   8:16 PM            425 f89c400f-c223-4f2e-8921-3342ed3342e4-attachment.txt
+-a----         12/6/2025   8:18 PM            771 fc8922b5-82b3-49c2-8f99-45ef8a414c62-result.json
+
+
+    Directory: C:\Users\2025\PycharmProjects\QAfox\reports\coverage
+
+
+Mode                 LastWriteTime         Length Name                                                                                                                            
+----                 -------------         ------ ----
+-a----         12/6/2025   8:18 PM             29 .gitignore
+-a----         12/6/2025   8:18 PM          17803 class_index.html
+-a----         12/6/2025   8:18 PM          26185 coverage_html_cb_513c77fd.js
+-a----         12/6/2025   8:18 PM           1732 favicon_32_cb_58284776.png
+-a----         12/6/2025   8:18 PM          42218 function_index.html
+-a----         12/6/2025   8:18 PM          10433 index.html
+-a----         12/6/2025   8:18 PM           9004 keybd_closed_cb_ce680311.png                                                                                                    
+-a----         12/6/2025   8:18 PM           5259 status.json
+-a----         12/6/2025   8:18 PM          16326 style_cb_ed8d5379.css
+-a----         12/6/2025   8:18 PM           4532 z_2bfd47985b8dac42___init___py.html
+-a----         12/6/2025   8:18 PM          18764 z_3e3005ae7443f751_conftest_py.html
+-a----         12/6/2025   8:18 PM          22495 z_3e3005ae7443f751_test_login_py.html
+-a----         12/6/2025   8:18 PM          34147 z_3e3005ae7443f751_test_Register_py.html
+-a----         12/6/2025   8:18 PM          13830 z_3e3005ae7443f751_test_Search_py.html                                                                                          
+-a----         12/6/2025   8:18 PM           4558 z_3e3005ae7443f751___init___py.html
+-a----         12/6/2025   8:18 PM           7768 z_677724d1ff2958d7_AccountPage_py.html
+-a----         12/6/2025   8:18 PM           7464 z_677724d1ff2958d7_AccountSuccessPage_py.html
+-a----         12/6/2025   8:18 PM          14856 z_677724d1ff2958d7_HomePage_py.html
+-a----         12/6/2025   8:18 PM          16015 z_677724d1ff2958d7_LoginPage_py.html
+-a----         12/6/2025   8:18 PM          36613 z_677724d1ff2958d7_RegisterPage_py.html
+-a----         12/6/2025   8:18 PM           9362 z_677724d1ff2958d7_SearchPage_py.html
+-a----         12/6/2025   8:18 PM           4574 z_677724d1ff2958d7___init___py.html                                                                                             
+-a----         12/6/2025   8:18 PM           6567 z_e5cfef13bd836c54_Read_Configurations_py.html
+-a----         12/6/2025   8:18 PM           4538 z_e5cfef13bd836c54___init___py.html
+
+
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> pip install allure-behave 2>&1 | grep -i "allure"
+grep : The term 'grep' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify 
+that the path is correct and try again.
+At line:1 char:34
++ pip install allure-behave 2>&1 | grep -i "allure"
++                                  ~~~~
+    + CategoryInfo          : ObjectNotFound: (grep:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> pip install allure-behave
+Collecting allure-behave
+  Downloading allure_behave-2.15.2-py3-none-any.whl.metadata (3.5 kB)
+Collecting behave>=1.2.5 (from allure-behave)
+  Using cached behave-1.3.3-py2.py3-none-any.whl.metadata (10 kB)
+Requirement already satisfied: allure-python-commons==2.15.2 in c:\users\2025\appdata\roaming\python\python314\site-packages (from allure-behave) (2.15.2)
+Requirement already satisfied: attrs>=16.0.0 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from allure-python-commons==2.15.2->allure-behave) (25.4.0)
+Requirement already satisfied: pluggy>=0.4.0 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from allure-python-commons==2.15.2->allure-behave) (1.6.0)
+Collecting cucumber-tag-expressions>=4.1.0 (from behave>=1.2.5->allure-behave)
+  Downloading cucumber_tag_expressions-8.1.0-py3-none-any.whl.metadata (4.7 kB)
+Collecting cucumber-expressions>=17.1.0 (from behave>=1.2.5->allure-behave)
+  Using cached cucumber_expressions-18.0.1-py3-none-any.whl.metadata (2.5 kB)
+Collecting parse>=1.18.0 (from behave>=1.2.5->allure-behave)
+  Using cached parse-1.20.2-py2.py3-none-any.whl.metadata (22 kB)
+Collecting parse-type>=0.6.0 (from behave>=1.2.5->allure-behave)
+  Using cached parse_type-0.6.6-py2.py3-none-any.whl.metadata (12 kB)
+Collecting six>=1.15.0 (from behave>=1.2.5->allure-behave)
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Requirement already satisfied: colorama>=0.3.7 in c:\users\2025\pycharmprojects\.venv\lib\site-packages (from behave>=1.2.5->allure-behave) (0.4.6)
+Downloading allure_behave-2.15.2-py3-none-any.whl (8.4 kB)
+Using cached behave-1.3.3-py2.py3-none-any.whl (223 kB)
+Using cached cucumber_expressions-18.0.1-py3-none-any.whl (20 kB)
+Downloading cucumber_tag_expressions-8.1.0-py3-none-any.whl (9.7 kB)
+Using cached parse-1.20.2-py2.py3-none-any.whl (20 kB)
+Using cached parse_type-0.6.6-py2.py3-none-any.whl (27 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Installing collected packages: parse, six, cucumber-tag-expressions, cucumber-expressions, parse-type, behave, allure-behave
+Successfully installed allure-behave-2.15.2 behave-1.3.3 cucumber-expressions-18.0.1 cucumber-tag-expressions-8.1.0 parse-1.20.2 parse-type-0.6.6 six-1.17.0                       
+
+[notice] A new release of pip is available: 25.1.1 -> 25.3
+[notice] To update, run: python.exe -m pip install --upgrade pip
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; python -c "import allure; print(allure.__file__)"
+C:\Users\2025\AppData\Roaming\Python\Python314\site-packages\allure\__init__.py
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> pip search allure 2>&1 || pip list | findstr /i allure
+At line:1 char:24
++ pip search allure 2>&1 || pip list | findstr /i allure
++                        ~~
+The token '||' is not a valid statement separator in this version.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : InvalidEndOfLine
+
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> pip list | Select-String -Pattern "allure"
+
+allure-behave                   2.15.2
+allure-pytest                   2.15.2
+allure-python-commons           2.15.2
+
+
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; Start-Process .\reports\report.html; Start-Process .\reports\coverage\index.html
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; @"
+>> === TEST EXECUTION SUMMARY ===
+>> Date: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')
+>> TEST RESULTS:
+>> - Total Tests: 11
+>> - Passed: 11
+>> - Failed: 0
+>> - Skipped: 0
+>> - Duration: 124.46 seconds (2 minutes 4 seconds)
+>> GENERATED REPORTS:
+>> 1. HTML Test Report
+>>    Location: .\reports\report.html
+>>    Contains: Detailed test results with timing and logs
+>> 2. JUnit XML Report
+>>    Location: .\reports\junit.xml
+>>    Contains: Test results in JUnit format (CI/CD integration)
+>> 3. Coverage Report (HTML)
+>>    Location: .\reports\coverage\index.html
+>>    Contains: Code coverage metrics and analysis
+>> 4. Allure Results (JSON)
+>>    Location: .\reports\allure-results\
+>>    Contains: 11 test result files in Allure format
+>> TEST CASES EXECUTED:
+>> - TestRegister.test_register_with_mandatory_fields
+>> - TestRegister.test_register_with_all_fields
+>> - TestRegister.test_register_with_duplicate_email
+>> - TestRegister.test_without_entering_any_fields
+>> - TestSearch.test_search_for_a_valid_product
+>> - TestSearch.test_search_for_invalid_product
+>> - TestSearch.test_search_without_entering_any_product
+>> - TestLogin.test_login_with_valid_credentials
+>> - TestLogin.test_login_with_invalid_credentials
+>> - TestLogin.test_Login_with_valid_email_and_invalid_password
+>> - TestLogin.test_Login_without_entering_credentials
+>> All reports are located in: C:\Users\2025\PycharmProjects\QAfox\reports\
+>> "@ | Write-Host
+=== TEST EXECUTION SUMMARY ===
+Date: 2025-12-06 20:20:28
+TEST RESULTS:
+- Total Tests: 11
+- Passed: 11
+- Failed: 0
+- Skipped: 0
+- Duration: 124.46 seconds (2 minutes 4 seconds)
+GENERATED REPORTS:
+1. HTML Test Report
+   Location: .\reports\report.html
+   Contains: Detailed test results with timing and logs
+2. JUnit XML Report
+   Location: .\reports\junit.xml
+   Contains: Test results in JUnit format (CI/CD integration)
+3. Coverage Report (HTML)
+   Location: .\reports\coverage\index.html
+   Contains: Code coverage metrics and analysis
+4. Allure Results (JSON)
+   Location: .\reports\allure-results\
+   Contains: 11 test result files in Allure format
+TEST CASES EXECUTED:
+- TestRegister.test_register_with_mandatory_fields
+- TestRegister.test_register_with_all_fields
+- TestRegister.test_register_with_duplicate_email
+- TestRegister.test_without_entering_any_fields
+- TestSearch.test_search_for_a_valid_product
+- TestSearch.test_search_for_invalid_product
+- TestSearch.test_search_without_entering_any_product
+- TestLogin.test_login_with_valid_credentials
+- TestLogin.test_login_with_invalid_credentials
+- TestLogin.test_Login_with_valid_email_and_invalid_password
+- TestLogin.test_Login_without_entering_credentials
+All reports are located in: C:\Users\2025\PycharmProjects\QAfox\reports\
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; Write-Host "
+>> ==================================================================================
+>>                         ✓ TEST EXECUTION COMPLETED SUCCESSFULLY
+>> ==================================================================================
+>> 📊 REPORTS GENERATED:
+>> 1️⃣  HTML Test Report (Pytest-HTML)
+>>     📁 Location: .\reports\report.html
+>>     📌 Usage: Open in browser to view detailed test results with logs and timing
+>>     ✨ Features: Test results, execution timeline, test logs, environment info
+>> 2️⃣  JUnit XML Report (CI/CD Integration)
+>>     📁 Location: .\reports\junit.xml
+>>     📌 Usage: Import into Jenkins, GitLab CI, GitHub Actions, or other CI/CD tools
+>>     ✨ Features: Parseable test results for automation and metrics
+>> 3️⃣  Code Coverage Report (HTML)
+>>     📁 Location: .\reports\coverage\index.html
+>>     📌 Usage: Open in browser to view code coverage metrics
+>>     ✨ Features: Line-by-line coverage, branch coverage, missing lines highlighted
+>> 4️⃣  Allure Results (JSON Format)
+>>     📁 Location: .\reports\allure-results\
+>>     📌 Usage: Contains 11 test result JSON files (one per test)
+>>     ✨ Features: Structured test data ready for Allure server integration
+>> ==================================================================================
+>>                              TEST EXECUTION SUMMARY
+>> ==================================================================================
+>> ✅ Total Tests:      11
+>> ✅ Passed:           11
+>> ❌ Failed:           0
+>> ⏭️  Skipped:          0
+>> ⏱️  Total Duration:   124.46 seconds (2 minutes 4 seconds)
+>> 📅 Date Executed:    $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')
+>> 🖥️  Environment:      Windows 11, Python 3.14, Chrome 143
+>> ==================================================================================
+>>                             QUICK COMMANDS
+>> ==================================================================================
+>> # Open HTML Report in Browser
+>> Start-Process .\reports\report.html
+>> # Open Coverage Report in Browser
+>> Start-Process .\reports\coverage\index.html
+>> # View JUnit XML (text format)
+>> Get-Content .\reports\junit.xml
+>> # List all generated reports
+>> Get-ChildItem .\reports -Recurse -File
+>> ==================================================================================
+>> "
+
+==================================================================================
+                        ✓ TEST EXECUTION COMPLETED SUCCESSFULLY
+==================================================================================
+📊 REPORTS GENERATED:
+1️⃣  HTML Test Report (Pytest-HTML)
+    📁 Location: .\reports\report.html
+    📌 Usage: Open in browser to view detailed test results with logs and timing
+    ✨ Features: Test results, execution timeline, test logs, environment info
+2️⃣  JUnit XML Report (CI/CD Integration)
+    📁 Location: .\reports\junit.xml
+    📌 Usage: Import into Jenkins, GitLab CI, GitHub Actions, or other CI/CD tools
+    ✨ Features: Parseable test results for automation and metrics
+3️⃣  Code Coverage Report (HTML)
+    📁 Location: .\reports\coverage\index.html
+    📌 Usage: Open in browser to view code coverage metrics
+    ✨ Features: Line-by-line coverage, branch coverage, missing lines highlighted
+4️⃣  Allure Results (JSON Format)
+    📁 Location: .\reports\allure-results\
+    📌 Usage: Contains 11 test result JSON files (one per test)
+    ✨ Features: Structured test data ready for Allure server integration
+==================================================================================
+                             TEST EXECUTION SUMMARY
+==================================================================================
+✅ Total Tests:      11
+✅ Passed:           11
+❌ Failed:           0
+⏭️  Skipped:          0
+⏱️  Total Duration:   124.46 seconds (2 minutes 4 seconds)
+📅 Date Executed:    2025-12-06 20:20:41
+🖥️  Environment:      Windows 11, Python 3.14, Chrome 143
+==================================================================================
+                            QUICK COMMANDS
+==================================================================================
+# Open HTML Report in Browser
+Start-Process .\reports\report.html
+# Open Coverage Report in Browser
+Start-Process .\reports\coverage\index.html
+# View JUnit XML (text format)
+Get-Content .\reports\junit.xml
+# List all generated reports
+Get-ChildItem .\reports -Recurse -File
+==================================================================================
+
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox\reports\allure-results; Get-ChildItem -File | Measure-Object | Select-Object -ExpandProperty
+ Count; Write-Host "Allure result files created successfully"
+25
+Allure result files created successfully
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox\reports\allure-results> cd C:\Users\2025\PycharmProjects\QAfox; Get-ChildItem .\reports -Recurse -File | Select-Object Name, Length | Format-Table -AutoSize
+
+Name                                                Length
+----                                                ------
+junit.xml                                             1471
+report.html                                          40150
+095354b9-b7fc-48ab-a9a7-536a209a4b6b-result.json       782
+21d9e36f-47cb-475e-9762-a621c8d2720f-result.json       784
+284644d7-dcfd-4c73-89d2-9a35d37bb2d3-result.json       762
+2eb6b028-1f29-43f0-8aed-edf7ef081e36-result.json       759
+4c39e3b5-a024-4a8d-b6e2-4b9082d90e94-result.json       789
+5077bd79-e3e2-4bb0-a743-687f928a4073-result.json       772
+54c64326-deda-4376-a278-0edfa3ef068e-container.json    375
+57bd5c8e-5709-44e1-8a06-d7bf0f83fb6f-container.json    375
+5bcc852d-d446-4c9d-802d-094b0efa6e33-container.json    375
+5d93bc68-5d81-47be-81fd-a2a02d9b4025-result.json     10014
+5f2a2ef4-af83-41b2-8ef6-62198d1c790a-container.json   4339
+624b6ea4-0f72-4be5-8da4-2356776b8429-container.json    375
+691ed971-7fa4-429e-824f-5b8e2ffbd3cd-result.json       778
+6efa0e83-2c71-441f-913e-d92042fabccd-container.json    375
+73b0a3ba-dd7f-49b6-9ff9-086eca86115b-container.json    375
+80881019-52d1-4520-bcca-e1c8cc34ba7d-result.json       762
+830a6238-789e-4f23-8aec-581b73cd9da7-container.json    375
+857ad9f0-555b-4ed4-b5d7-9e752708b07c-result.json       763
+9023c65f-cc00-4e43-a7a5-a0848ea12447-container.json    375
+929f492b-76a7-4143-8c44-ccbc9aa4bd5d-container.json    375
+a5dcb638-c0e3-493c-be72-1068f3575bc2-container.json    375
+bbe58b38-2f63-4d66-8f4d-db1e9cfd7583-container.json    375
+cfb3ef24-fb3c-4b5b-9274-b055ef37e664-result.json       780
+f89c400f-c223-4f2e-8921-3342ed3342e4-attachment.txt    425
+fc8922b5-82b3-49c2-8f99-45ef8a414c62-result.json       771
+.gitignore                                              29
+class_index.html                                     17803
+coverage_html_cb_513c77fd.js                         26185
+favicon_32_cb_58284776.png                            1732
+function_index.html                                  42218
+index.html                                           10433
+keybd_closed_cb_ce680311.png                          9004
+status.json                                           5259
+style_cb_ed8d5379.css                                16326
+z_2bfd47985b8dac42___init___py.html                   4532
+z_3e3005ae7443f751_conftest_py.html                  18764
+z_3e3005ae7443f751_test_login_py.html                22495
+z_3e3005ae7443f751_test_Register_py.html             34147
+z_3e3005ae7443f751_test_Search_py.html               13830
+z_3e3005ae7443f751___init___py.html                   4558
+z_677724d1ff2958d7_AccountPage_py.html                7768
+z_677724d1ff2958d7_AccountSuccessPage_py.html         7464
+z_677724d1ff2958d7_HomePage_py.html                  14856
+z_677724d1ff2958d7_LoginPage_py.html                 16015
+z_677724d1ff2958d7_RegisterPage_py.html              36613
+z_677724d1ff2958d7_SearchPage_py.html                 9362
+z_677724d1ff2958d7___init___py.html                   4574
+z_e5cfef13bd836c54_Read_Configurations_py.html        6567
+z_e5cfef13bd836c54___init___py.html                   4538
+
+
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; Write-Host @"
+>> ╔════════════════════════════════════════════════════════════════════════════════╗
+>> ║                   ✅ TEST EXECUTION COMPLETED SUCCESSFULLY                     ║
+>> ║                         All 11 Tests Passed (100%)                             ║
+>> ╚════════════════════════════════════════════════════════════════════════════════╝
+>> 📊 REPORTS GENERATED IN: C:\Users\2025\PycharmProjects\QAfox\reports\
+>> ┌─ 1️⃣  HTML TEST REPORT ────────────────────────────────────────────────────────┐
+>> │ File: report.html (40 KB)                                                      │
+>> │ Open: Start-Process .\reports\report.html                                      │
+>> │ Contains: Test results, logs, timing, environment info                         │
+>> └────────────────────────────────────────────────────────────────────────────────┘
+>> ┌─ 2️⃣  JUNIT XML REPORT ────────────────────────────────────────────────────────┐
+>> │ File: junit.xml (1.4 KB)                                                       │
+>> │ View: Get-Content .\reports\junit.xml                                          │
+>> │ Use: CI/CD integration (Jenkins, GitHub Actions, GitLab CI, etc.)              │
+>> └────────────────────────────────────────────────────────────────────────────────┘
+>> ┌─ 3️⃣  CODE COVERAGE REPORT ────────────────────────────────────────────────────┐
+>> │ File: coverage/index.html (270+ KB)                                            │
+>> │ Open: Start-Process .\reports\coverage\index.html                              │
+>> │ Contains: Line coverage, branch coverage, covered/uncovered analysis           │
+>> └────────────────────────────────────────────────────────────────────────────────┘
+>> ┌─ 4️⃣  ALLURE RESULTS ──────────────────────────────────────────────────────────┐
+>> │ Location: allure-results/ (24 JSON files)                                      │
+>> │ Contains: Structured test data (11 test results + metadata)                    │
+>> │ Use: Advanced Allure server reporting (optional)                               │
+>> └────────────────────────────────────────────────────────────────────────────────┘
+>> ┌─ 5️⃣  TEST SUMMARY DOCUMENT ──────────────────────────────────────────────────┐
+>> │ File: TEST_REPORT_SUMMARY.md                                                   │
+>> │ Contains: Comprehensive report of all generated artifacts                      │
+>> └────────────────────────────────────────────────────────────────────────────────┘
+>> ════════════════════════════════════════════════════════════════════════════════
+>> TEST EXECUTION METRICS:
+>>   ✅ Total Tests:     11
+>>   ✅ Passed:          11 (100%)
+>>   ❌ Failed:          0
+>>   ⏭️  Skipped:         0
+>>   ⏱️  Duration:        124.46 seconds (2m 4s)
+>>   📅 Timestamp:       2025-12-06 20:20:41
+>>   🖥️  Platform:        Windows 11, Python 3.14, Chrome 143
+>> ════════════════════════════════════════════════════════════════════════════════
+>> RECOMMENDED NEXT STEPS:
+>> 1. View HTML Report (Recommended for Review)
+>>    PS> Start-Process .\reports\report.html
+>> 2. View Code Coverage
+>>    PS> Start-Process .\reports\coverage\index.html
+>> 3. Check Test Summary Document
+>>    PS> Get-Content .\TEST_REPORT_SUMMARY.md
+>> 4. For CI/CD Integration, use: .\reports\junit.xml
+>> ════════════════════════════════════════════════════════════════════════════════
+>> All reports are ready for review and integration! 🎉
+>> "@ -ForegroundColor Green
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                   ✅ TEST EXECUTION COMPLETED SUCCESSFULLY                     ║
+║                         All 11 Tests Passed (100%)                             ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+📊 REPORTS GENERATED IN: C:\Users\2025\PycharmProjects\QAfox\reports\
+┌─ 1️⃣  HTML TEST REPORT ────────────────────────────────────────────────────────┐
+│ File: report.html (40 KB)                                                      │
+│ Open: Start-Process .\reports\report.html                                      │
+│ Contains: Test results, logs, timing, environment info                         │
+└────────────────────────────────────────────────────────────────────────────────┘
+┌─ 2️⃣  JUNIT XML REPORT ────────────────────────────────────────────────────────┐
+│ File: junit.xml (1.4 KB)                                                       │
+│ View: Get-Content .\reports\junit.xml                                          │
+│ Use: CI/CD integration (Jenkins, GitHub Actions, GitLab CI, etc.)              │
+└────────────────────────────────────────────────────────────────────────────────┘
+┌─ 3️⃣  CODE COVERAGE REPORT ────────────────────────────────────────────────────┐
+│ File: coverage/index.html (270+ KB)                                            │
+│ Open: Start-Process .\reports\coverage\index.html                              │
+│ Contains: Line coverage, branch coverage, covered/uncovered analysis           │
+└────────────────────────────────────────────────────────────────────────────────┘
+┌─ 4️⃣  ALLURE RESULTS ──────────────────────────────────────────────────────────┐
+│ Location: allure-results/ (24 JSON files)                                      │
+│ Contains: Structured test data (11 test results + metadata)                    │
+│ Use: Advanced Allure server reporting (optional)                               │
+└────────────────────────────────────────────────────────────────────────────────┘
+┌─ 5️⃣  TEST SUMMARY DOCUMENT ──────────────────────────────────────────────────┐
+│ File: TEST_REPORT_SUMMARY.md                                                   │
+│ Contains: Comprehensive report of all generated artifacts                      │
+└────────────────────────────────────────────────────────────────────────────────┘
+════════════════════════════════════════════════════════════════════════════════
+TEST EXECUTION METRICS:
+  ✅ Total Tests:     11
+  ✅ Passed:          11 (100%)
+  ❌ Failed:          0
+  ⏭️  Skipped:         0
+  ⏱️  Duration:        124.46 seconds (2m 4s)
+  📅 Timestamp:       2025-12-06 20:20:41
+  🖥️  Platform:        Windows 11, Python 3.14, Chrome 143
+════════════════════════════════════════════════════════════════════════════════
+RECOMMENDED NEXT STEPS:
+1. View HTML Report (Recommended for Review)
+   PS> Start-Process .\reports\report.html
+2. View Code Coverage
+   PS> Start-Process .\reports\coverage\index.html
+3. Check Test Summary Document
+   PS> Get-Content .\TEST_REPORT_SUMMARY.md
+4. For CI/CD Integration, use: .\reports\junit.xml
+════════════════════════════════════════════════════════════════════════════════
+All reports are ready for review and integration! 🎉
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; Get-Item TEST_REPORT_SUMMARY.md | Select-Object Name, Length, LastWriteTime
+
+Name                   Length LastWriteTime
+----                   ------ -------------
+TEST_REPORT_SUMMARY.md   5592 12/6/2025 8:21:24 PM
+
+
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; ls -la TEST_REPORT_SUMMARY.md 2>&1 || dir TEST_REPORT_SUMMARY.md
+At line:1 char:76
++ ... \PycharmProjects\QAfox; ls -la TEST_REPORT_SUMMARY.md 2>&1 || dir TES ...
++                                                                ~~
+The token '||' is not a valid statement separator in this version.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : InvalidEndOfLine
+
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; Get-ChildItem -Path . -Maxdepth 1 | grep -E "(pytest.ini|TEST_REPORT|reports)" || Get-ChildItem -Path . | Where-Object {$_.Name -match "(pytest|TEST|reports)"}
+At line:1 char:120
++ ... . -Maxdepth 1 | grep -E "(pytest.ini|TEST_REPORT|reports)" || Get-Chi ...
++                                                                ~~
+The token '||' is not a valid statement separator in this version.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : InvalidEndOfLine
+
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; ls
+
+
+    Directory: C:\Users\2025\PycharmProjects\QAfox
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         12/6/2025   7:43 PM                .pytest_cache
+d-----         12/6/2025   9:16 AM                Configurations
+d-----         12/6/2025   7:40 PM                PageObjects
+d-----         12/6/2025   8:18 PM                reports
+d-----         12/6/2025   7:40 PM                Tests
+d-----         12/6/2025   7:40 PM                Utilities
+-a----         12/6/2025   8:18 PM          53248 .coverage                                                                                                                       
+-a----         12/6/2025   8:15 PM            191 pytest.ini
+-a----         12/6/2025   8:21 PM           5592 TEST_REPORT_SUMMARY.md
+
+
+(.venv) PS C:\Users\2025\PycharmProjects\QAfox> cd C:\Users\2025\PycharmProjects\QAfox; Write-Host "
+>> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+>>                     ✅ PYTEST REPORTS GENERATED SUCCESSFULLY
+>> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+>> 📍 PROJECT LOCATION: C:\Users\2025\PycharmProjects\QAfox\
+>> 📋 FILES CREATED:
+>>    ✓ pytest.ini (191 bytes) - Configuration file
+>>    ✓ TEST_REPORT_SUMMARY.md (5.6 KB) - Comprehensive documentation
+>>    ✓ .coverage (53 KB) - Coverage data
+>> 📂 DIRECTORIES CREATED:
+>>    ✓ reports/ - Main reports directory containing:
+>>        • report.html - HTML test report (40 KB)
+>>        • junit.xml - JUnit XML format (1.4 KB)
+>>        • coverage/ - Code coverage HTML reports (270+ KB)
+>>        • allure-results/ - Allure JSON results (24 files)
+>> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+>>                               TEST EXECUTION SUMMARY
+>> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+>> 🎯 RESULTS: 11 PASSED | 0 FAILED | 0 SKIPPED | 100% SUCCESS RATE
+>> ⏱️  DURATION: 124.46 seconds (2 minutes 4 seconds)
+>> 📅 EXECUTED: December 6, 2025 @ 20:20:41
+>> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+>>                          HOW TO ACCESS YOUR REPORTS
+>> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+>> 1️⃣  OPEN HTML REPORT (Most User-Friendly):
+>>     Start-Process .\reports\report.html
+>> 2️⃣  OPEN COVERAGE REPORT:
+>>     Start-Process .\reports\coverage\index.html
+>> 3️⃣  READ TEST SUMMARY:
+>>     Get-Content .\TEST_REPORT_SUMMARY.md
+>> 4️⃣  VIEW JUNIT XML (For CI/CD):
+>>     Get-Content .\reports\junit.xml
+>> 5️⃣  EXPLORE ALL REPORTS:
+>>     explorer .\reports\
+>> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+>>                      INTEGRATING WITH CI/CD PIPELINES
+>> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+>> Use ./reports/junit.xml with:
+>>   ✓ Jenkins
+>>   ✓ GitHub Actions
+>>   ✓ GitLab CI
+>>   ✓ Azure DevOps
+>>   ✓ TeamCity
+>> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+>> All reports are ready for review! 🎉
+>> " -ForegroundColor Green
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                    ✅ PYTEST REPORTS GENERATED SUCCESSFULLY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📍 PROJECT LOCATION: C:\Users\2025\PycharmProjects\QAfox\
+📋 FILES CREATED:
+   ✓ pytest.ini (191 bytes) - Configuration file
+   ✓ TEST_REPORT_SUMMARY.md (5.6 KB) - Comprehensive documentation
+   ✓ .coverage (53 KB) - Coverage data
+📂 DIRECTORIES CREATED:
+   ✓ reports/ - Main reports directory containing:
+       • report.html - HTML test report (40 KB)
+       • junit.xml - JUnit XML format (1.4 KB)
+       • coverage/ - Code coverage HTML reports (270+ KB)
+       • allure-results/ - Allure JSON results (24 files)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                              TEST EXECUTION SUMMARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 RESULTS: 11 PASSED | 0 FAILED | 0 SKIPPED | 100% SUCCESS RATE
+⏱️  DURATION: 124.46 seconds (2 minutes 4 seconds)
+📅 EXECUTED: December 6, 2025 @ 20:20:41
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                         HOW TO ACCESS YOUR REPORTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣  OPEN HTML REPORT (Most User-Friendly):
+    Start-Process .\reports\report.html
+2️⃣  OPEN COVERAGE REPORT:
+    Start-Process .\reports\coverage\index.html
+3️⃣  READ TEST SUMMARY:
+    Get-Content .\TEST_REPORT_SUMMARY.md
+4️⃣  VIEW JUNIT XML (For CI/CD):
+    Get-Content .\reports\junit.xml
+5️⃣  EXPLORE ALL REPORTS:
+    explorer .\reports\
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                     INTEGRATING WITH CI/CD PIPELINES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Use ./reports/junit.xml with:
+  ✓ Jenkins
+  ✓ GitHub Actions
+  ✓ GitLab CI
+  ✓ Azure DevOps
+  ✓ TeamCity
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+All reports are ready for review! 🎉
+
